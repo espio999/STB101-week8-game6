@@ -1,0 +1,30 @@
+---
+title: "department"
+output: html_notebook
+---
+
+```{r setup}
+library(readxl)
+Book6 <- read_excel("Book6.xlsx", range = "k6:n11")
+
+mtx = rbind(
+  c(Book6$`Dept A`),
+  c(Book6$`Dept B`),
+  c(Book6$`Dept C`),
+  c(Book6$`Dept D`)
+)
+```
+
+##  Test if there are differences(dependency) among deparments.
+### assumption
+H0: no difference among departments  
+H1: not H0  
+
+```{r}
+chisq.test(mtx)
+```
+P is less than 5%.  
+H0 is rejected.
+
+### conclusion
+there is difference among departments.
